@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<body>
+    <div class="container">
+        <h1>Protect Marine Life</h1>
+        <img src="Siete-Pecados-snorkeling-island-hopping-coron-boat-tour-Palawan-4.jpg">
+
+        <form id="registerForm">
+            <input type="text" name="surname" id="surname" placeholder="Surname" required>
+            <input type="text" name="firstname" id="firstname" placeholder="First Name" required>
+            <input type="number" name="age" id="age" placeholder="Age" required>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <script>
+            const form = document.getElementById("registerForm");
+
+            form.addEventListener("submit", e => {
+                e.preventDefault();
+
+                const data = new URLSearchParams(new FormData(form));
+
+                fetch("https://script.google.com/macros/s/AKfycbxdagE0LwM3NJRi3NklvUplilfQirw-ObaGj1EFIRxd72EIC0Q_SCzuFAdkxTSazbkeqg/exec", {
+                    method: "POST",
+                    body: data
+                })
+                    .then(response => response.text())
+                    .then(result => {
+                        alert("Form submitted successfully!");
+                        form.reset();
+                    })
+                    .catch(error => alert("Error submitting form: " + error));
+            });
+        </script>
+
+
+    </div>
+</body>
